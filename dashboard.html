@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Homework Solver - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-brain"></i>
+            <span>AI Homework Solver</span>
+        </div>
+        <div class="nav-actions">
+            <div class="api-status">
+                <i class="fas fa-circle"></i>
+                <span>AI Connected</span>
+            </div>
+            <span id="user-name" class="user-name"></span>
+            <button id="logout-btn" class="btn-secondary">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <button id="new-question-btn" class="sidebar-btn active">
+                <i class="fas fa-plus"></i> New Question
+            </button>
+            <button id="history-btn" class="sidebar-btn">
+                <i class="fas fa-history"></i> History
+            </button>
+            <button id="settings-btn" class="sidebar-btn">
+                <i class="fas fa-cog"></i> Settings
+            </button>
+        </div>
+
+        <main class="main-content">
+            <!-- New Question Section -->
+            <div id="new-question-section" class="content-section active">
+                <div class="section-header">
+                    <h2><i class="fas fa-question-circle"></i> Ask a Question</h2>
+                    <p>Get step-by-step solutions to your homework problems</p>
+                </div>
+
+                <div class="question-input">
+                    <div class="input-tabs">
+                        <button id="text-tab" class="input-tab-btn active">
+                            <i class="fas fa-keyboard"></i> Type Question
+                        </button>
+                        <button id="upload-tab" class="input-tab-btn">
+                            <i class="fas fa-upload"></i> Upload Image
+                        </button>
+                    </div>
+
+                    <div id="text-input" class="input-area active">
+                        <textarea id="question-text" placeholder="Type your math, science, or any homework question here..."></textarea>
+                    </div>
+
+                    <div id="upload-input" class="input-area">
+                        <div class="upload-area">
+                            <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                            <div class="upload-placeholder" onclick="document.getElementById('image-upload').click()">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Click to upload an image of your question</p>
+                                <small>PNG, JPG, JPEG up to 10MB • Text will be automatically extracted</small>
+                            </div>
+                            <div id="image-preview" class="image-preview"></div>
+                        </div>
+                    </div>
+
+                    <div class="solve-options">
+                        <select id="subject-select">
+                            <option value="math">Mathematics</option>
+                            <option value="physics">Physics</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="biology">Biology</option>
+                            <option value="computer-science">Computer Science</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <button id="solve-btn" class="btn-primary">
+                            <i class="fas fa-magic"></i> Solve Question
+                        </button>
+                    </div>
+                </div>
+
+                <div id="solution-area" class="solution-area">
+                    <div class="solution-header">
+                        <h3><i class="fas fa-lightbulb"></i> Solution</h3>
+                        <div class="solution-actions">
+                            <button id="copy-solution-btn" class="btn-secondary">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                            <button id="save-solution-btn" class="btn-secondary">
+                                <i class="fas fa-save"></i> Save to History
+                            </button>
+                        </div>
+                    </div>
+                    <div id="solution-content" class="solution-content"></div>
+                </div>
+            </div>
+
+            <!-- History Section -->
+            <div id="history-section" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-history"></i> Question History</h2>
+                    <p>Your past questions and solutions</p>
+                </div>
+
+                <div id="history-list" class="history-list">
+                    <!-- History items will be populated here -->
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div id="settings-section" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-cog"></i> Settings</h2>
+                    <p>Manage your account and preferences</p>
+                </div>
+
+                <div class="settings-content">
+                    <div class="setting-group">
+                        <h3>Account</h3>
+                        <p>Manage your account settings and preferences.</p>
+                        <button id="delete-account-btn" class="btn-danger">
+                            <i class="fas fa-trash"></i> Delete Account
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Loading Modal -->
+    <div id="loading-modal" class="modal">
+        <div class="modal-content">
+            <div class="loading-spinner"></div>
+            <p>Analyzing your question...</p>
+        </div>
+    </div>
+
+    <!-- Message Modal -->
+    <div id="message-modal" class="modal">
+        <div class="modal-content">
+            <div id="message-content"></div>
+            <button id="message-close-btn" class="btn-primary">OK</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.0.4/dist/tesseract.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
