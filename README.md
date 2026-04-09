@@ -274,7 +274,7 @@ Need help? Here's how to get support:
 
 - **Documentation**: Check this README first
 - **Community**: Join our Discord server
-- **Email**: support@aihomeworksolver.com
+- **Email**: stoneplayz36@gmail.com
 - **Issues**: Report bugs on GitHub
 
 ---
