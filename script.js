@@ -4,7 +4,7 @@ let currentQuestion = null;
 
 // OpenRouter API configuration - Real API key for production use
 const OPENROUTER_BASE_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const DEFAULT_API_KEY = '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';
+const DEFAULT_API_KEY = 'PASTE YOUR OPEN ROUTER API HERE';
 
 // App configuration
 const APP_CONFIG = {
